@@ -155,15 +155,18 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
   }, [state, pathname, workspaceId]);
 
   //
-  const wrapperRef = useCallback(async (wrapper: any) => {
-    if (typeof window !== 'undefined') {
-      if (wrapper === null) return;
+  const wrapperRef = useCallback((wrapper: HTMLDivElement | null) => {
+    const init = async () => {
+      if (!wrapper || typeof window === 'undefined') return;
+  
       wrapper.innerHTML = '';
       const editor = document.createElement('div');
       wrapper.append(editor);
+  
       const Quill = (await import('quill')).default;
       const QuillCursors = (await import('quill-cursors')).default;
       Quill.register('modules/cursors', QuillCursors);
+  
       const q = new Quill(editor, {
         theme: 'snow',
         modules: {
@@ -174,8 +177,11 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
         },
       });
       setQuill(q);
-    }
+    };
+  
+    init(); // call the async function inside
   }, []);
+  
 
   const restoreFileHandler = async () => {
     if (dirType === 'file') {
