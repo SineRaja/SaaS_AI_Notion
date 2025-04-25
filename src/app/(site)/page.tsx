@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import TitleSection from '@/components/landing-page/title-section';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';

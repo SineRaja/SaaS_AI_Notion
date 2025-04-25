@@ -1,5 +1,7 @@
 // Indicates this module is intended to run in a client-side environment.
 'use client';
+export const dynamic = 'force-dynamic';
+
 // Import necessary modules and hooks.
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';

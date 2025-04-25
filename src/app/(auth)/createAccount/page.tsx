@@ -1,4 +1,5 @@
 'use client';
+export const dynamic = 'force-dynamic';
 // Importing React library for building UI components.
 import React, { useMemo, useState } from 'react';
 // Importing button, form components, and input controls for building the form.
